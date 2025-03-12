@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorenzo Sormani | Curriculum Vitae</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --gradient-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-gradient: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+            --transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-color);
+            background-color: var(--light-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            min-height: 100vh;
+            padding: 120px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-bg);
+            transform: translateX(-100%);
+            transition: var(--transition);
+        }
+        
+        .logo:hover::after {
+            transform: translateX(0);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 25px;
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-bg);
+            border-radius: 25px;
+            z-index: -1;
+            transform: translateY(100%);
+            transition: var(--transition);
+            opacity: 0;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: white;
+        }
+        
+        .nav-link:hover::before, .nav-link.active::before {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .nav-link i {
+            margin-right: 8px;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover i, .nav-link.active i {
+            transform: translateY(-3px);
+        }
+        
+        /* Hero Section */
+        #home {
+            background: var(--gradient-bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2018/04/29/09/31/carpentry-3359156_1280.jpg') no-repeat center center/cover;
+            opacity: 0.15;
+            filter: blur(5px);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px;
+            border: 8px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation: morph 8s ease-in-out infinite;
+        }
+        
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+        
+        .typing-text {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            min-height: 80px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            margin-top: 30px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-color);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+        
+        .btn:hover {
+            box-shadow: 0 15px 35px rgba(231, 76, 60, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* About Section */
+        #about {
+            background-color: white;
+        }
+        
+        #about .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            margin-bottom: 60px;
+            text-align: center;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .section-title::before {
+            content: attr(data-text);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 100px;
+            color: rgba(0, 0, 0, 0.03);
+            z-index: 0;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: var(--gradient-bg);
+            border-radius: 10px;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 30px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .about-content.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        /* Skills Section */
+        #skills {
+            background-color: #f9f9f9;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #skills::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
+        }
+        
+        .skills-content {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .skill-item {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .skill-bar {
+            height: 12px;
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.1), 
+                rgba(255, 255, 255, 0.4), 
+                rgba(255, 255, 255, 0.1));
+            animation: shine 2s infinite linear;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .skill-progress.falegnameria { background: linear-gradient(90deg, #9b59b6, #8e44ad); }
+        .skill-progress.sicurezza { background: linear-gradient(90deg, #3498db, #2980b9); }
+        .skill-progress.vendita { background: linear-gradient(90deg, #e67e22, #d35400); }
+        .skill-progress.soccorso { background: linear-gradient(90deg, #e74c3c, #c0392b); }
+        .skill-progress.relazionali { background: linear-gradient(90deg, #2ecc71, #27ae60); }
+        
+        /* Experience Section */
+        #experience {
+            background-color: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, #3498db, #2ecc71);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .timeline-item.left {
+            left: 0;
+            transform: translateX(-50px);
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+            transform: translateX(50px);
+        }
+        
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border: 6px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+            box-shadow: 0 0 0 5px rgba(52, 152, 219, 0.2);
+            transition: var(--transition);
+        }
+        
+        .timeline-item:hover::after {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        .timeline-item.left::after {
+            right: -15px;
+        }
+        
+        .timeline-item.right::after {
+            left: -15px;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border-top: 5px solid;
+        }
+        
+        .timeline-item:nth-child(1) .timeline-content { border-color: #9b59b6; }
+        .timeline-item:nth-child(2) .timeline-content { border-color: #3498db; }
+        .timeline-item:nth-child(3) .timeline-content { border-color: #e74c3c; }
+        .timeline-item:nth-child(4) .timeline-content { border-color: #f1c40f; }
+        .timeline-item:nth-child(5) .timeline-content { border-color: #2ecc71; }
+        .timeline-item:nth-child(6) .timeline-content { border-color: #e67e22; }
+        .timeline-item:nth-child(7) .timeline-content { border-color: #1abc9c; }
+        
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+        }
+        
+        .timeline-date i {
+            margin-right: 15px;
+            font-size: 24px;
+            color: inherit;
+            background: rgba(52, 152, 219, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .timeline-item h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: var(--dark-color);
+        }
+        
+        /* Contact Section */
+        #contact {
+            background: var(--gradient-bg);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://cdn.pixabay.com/photo/2018/04/29/09/31/carpentry-3359156_1280.jpg') no-repeat center center/cover;
+            opacity: 0.1;
+            filter: blur(5px);
+        }
+        
+        #contact .section-title {
+            color: white;
+        }
+        
+        #contact .section-title::before {
+            color: rgba(255, 255, 255, 0.05);
+        }
+        
+        #contact .section-title::after {
+            background: white;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-form {
+            flex: 0 0 60%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .contact-form.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .social-links {
+            flex: 0 0 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transition-delay: 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-links.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .social-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50%;
+            margin: 10px;
+            text-decoration: none;
+            font-size: 30px;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-bg);
+            z-index: -1;
+            transform: scale(0);
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-10px) rotate(360deg);
+            color: white;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-icon:hover::before {
+            transform: scale(1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            position: relative;
+        }
+        
+        /* Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            display: block;
+            pointer-events: none;
+            z-index: 1;
+            animation: particles 10s linear infinite;
+        }
+        
+        @keyframes particles {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .contact-form, .social-links {
+                flex: 0 0 100%;
+            }
+            
+            .social-links {
+                margin-top: 50px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 15px !important;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+        }
+
+            /* Stile per il Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+        
+        .music-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .music-toggle:hover {
+            transform: scale(1.1);
+            background: var(--accent-color);
+        }
+        
+        .music-toggle i {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">Lorenzo Sormani</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> Chi Sono</a></li>
+                <li><a href="#skills" class="nav-link"><i class="fas fa-tools"></i> Competenze</a></li>
+                <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Esperienze</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home">
+        <div class="particles">
+            <!-- JS will add particles here -->
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <img src="foto.jpg" alt="Lorenzo Sormani" class="hero-img">
+                <div class="typing-text"></div>
+                <a href="#about" class="btn">Scopri di più <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title" data-text="Biografia">Chi Sono</h2>
+            <div class="about-content">
+                <p>
+                    Mi chiamo Lorenzo Sormani, sono una persona dinamica e intraprendente,
+                    sempre pronta a mettersi in gioco in nuove esperienze. Ho una grande
+                    passione per il sociale e per tutto ciò che mi permette di aiutare gli altri.
+                    Per questo ho scelto di svolgere il Servizio Civile Universale
+                    con ANPAS Lombardia presso AVIS Meda, dove mi sono occupato del trasporto
+                    di persone con disabilità e viaggi extraospedalieri. Da aprile 2023 sono
+                    anche volontario soccorritore, donatore di sangue e attualmente sono
+                    in attesa di iniziare il corso per diventare pompiere volontario.
+                </p>
+                <p style="margin-top: 20px;">
+                    Oltre al volontariato, ho sempre avuto una forte curiosità per il mondo
+                    della tecnologia e dell’informatica. Mi piace lavorare con i software
+                    del pacchetto Adobe come Photoshop, After Effects e Illustrator, e ho
+                    competenze di base in programmazione HTML, CSS e Java. Mi piace sperimentare
+                    con il montaggio video e la grafica digitale, strumenti che ho approfondito
+                    nel mio percorso di studi presso Artademia, una scuola di impostazione
+                    Steineriana a Milano.
+                </p>
+                <p style="margin-top: 20px;">
+                    Nel mio tempo libero mi dedico anche al mondo del cinema e dello
+                    spettacolo: dal 2021 collaboro come volontario presso il cine-teatro
+                    S. Rocco di Seregno, dove ho avuto modo di lavorare come operatore cinematografico,
+                    barista e tecnico del palcoscenico. Amo l’arte, il cinema e l’organizzazione di eventi,
+                    perché mi danno l’opportunità di stare a contatto con le persone e
+                    vivere esperienze sempre diverse.
+                </p>
+                <p style="margin-top: 20px;">
+                    Sono una persona determinata, curiosa e con un forte senso di responsabilità.
+                    Mi piace aiutare gli altri, imparare cose nuove e affrontare sempre nuove sfide.
+                    Sono sempre alla ricerca di opportunità che mi permettano di crescere
+                    sia a livello personale che professionale.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- music background -->
+    <div class="music-player">
+        <audio id="background-music" loop>
+            <source src="background.mp3" type="audio/mp3">
+            Il tuo browser non supporta l'elemento audio.
+        </audio>
+        <button id="music-toggle" class="music-toggle">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title" data-text="Abilità">Competenze</h2>
+            <div class="skills-content">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Capacità di Lavoro di Squadra e Volontariato</span>
+                        <span>100%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress falegnameria" data-width="100%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Competenze Informatiche Adobe</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress sicurezza" data-width="80%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Competenze Informatiche Pacchetto Office</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress vendita" data-width="60%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Lingua Inglese A2</span>
+                        <span>50%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress soccorso" data-width="50%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Lingua Spagnolo A1</span>
+                        <span>30%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress relazionali" data-width="30%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Esperienze</h2>
+            <div class="timeline">
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="fas fa-briefcase"></i> Dal 2021 – Ad Oggi
+                        </div>
+                        <h3>Cine-teatro S. Rocco – Seregno</h3>
+                        <p>Volontario presso il cine-teatro, ricoprendo diversi ruoli tra cui operatore cinematografico, barista e tecnico del palcoscenico per eventi e spettacoli.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="fas fa-briefcase"></i> Giugno – Luglio 2021
+                        </div>
+                        <h3>La Brughiera – Meda (Onlus)</h3>
+                        <p>Ho lavorato come collaboratore agricolo, svolgendo mansioni legate alla cura delle coltivazioni e alla gestione degli animali all'interno dell'associazione.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="fas fa-briefcase"></i> 25 maggio 2023 – maggio 2024
+                        </div>
+                        <h3>Servizio Civile Universale - ANPAS Lombardia presso AVIS Meda</h3>
+                        <p>Mi sono occupato del trasporto di persone con disabilità e viaggi extraospedalieri, garantendo assistenza e supporto durante gli spostamenti.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="fas fa-briefcase"></i> Aprile 2023 – Ad Oggi
+                        </div>
+                        <h3>Volontario Soccorritore - AVIS Meda</h3>
+                        <p>Attività di volontariato nel soccorso sanitario, fornendo assistenza ai pazienti e partecipando attivamente alle operazioni di emergenza.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="fas fa-briefcase"></i> Ottobre 2023 – Ad Oggi
+                        </div>
+                        <h3>Donatore di sangue - AVIS Meda</h3>
+                        <p>Partecipazione attiva alle campagne di donazione del sangue per contribuire al fabbisogno ospedaliero e salvare vite.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <i class="fas fa-briefcase"></i> In attesa di corso
+                        </div>
+                        <h3>Iscritto come Pompiere Volontario</h3>
+                        <p>Attualmente in attesa di frequentare il corso di formazione per diventare pompiere volontario e poter contribuire alla sicurezza della comunità.</p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contatti</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Messaggio" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Invia Messaggio</button>
+                    </form>
+                </div>
+                <div class="social-links">
+                    <h3 class="social-title">Seguimi sui Social</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Lorenzo Sormani. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Typing Effect
+        const typingText = document.querySelector('.typing-text');
+        const text = "Ciao sono Lorenzo Sormani ho 20 anni e sono Volontario Avis Meda";
+        let index = 0;
+
+        function typeWriter() {
+            if (index < text.length) {
+                typingText.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        // Active Navigation on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Animate about section
+            const aboutContent = document.querySelector('.about-content');
+            if (current === 'about' && !aboutContent.classList.contains('show')) {
+                aboutContent.classList.add('show');
+            }
+            
+            // Animate skills
+            if (current === 'skills') {
+                const skillItems = document.querySelectorAll('.skill-item');
+                skillItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('show');
+                        const progressBar = item.querySelector('.skill-progress');
+                        progressBar.style.width = progressBar.getAttribute('data-width');
+                    }, 200 * index);
+                });
+            }
+            
+            // Animate timeline
+            if (current === 'experience') {
+                const timelineItems = document.querySelectorAll('.timeline-item');
+                timelineItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('show');
+                    }, 200 * index);
+                });
+            }
+            
+            // Animate contact
+            if (current === 'contact') {
+                const contactForm = document.querySelector('.contact-form');
+                const socialLinks = document.querySelector('.social-links');
+                
+                contactForm.classList.add('show');
+                socialLinks.classList.add('show');
+            }
+        });
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            typeWriter();
+            
+            // Scroll to section when clicking on a nav link
+            navLinks.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    
+                    const targetId = link.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', e => {
+                e.preventDefault();
+                alert('Il messaggio è stato inviato con successo!');
+                contactForm.reset();
+            });
+        });
+
+        // Audio player
+        window.addEventListener('load', () => {
+            const backgroundMusic = document.getElementById('background-music');
+            const musicToggle = document.getElementById('music-toggle');
+            const musicIcon = musicToggle.querySelector('i');
+            
+            // Imposta il volume a 0 (muted) per consentire l'autoplay
+            backgroundMusic.volume = 0;
+            backgroundMusic.muted = true;  // Imposta come mutato per l'autoplay
+
+            // Funzione per avviare la musica al primo click sulla pagina
+            const startMusic = () => {
+                // Tenta di avviare la musica
+                let autoplayAttempt = backgroundMusic.play();
+                
+                if (autoplayAttempt !== undefined) {
+                    autoplayAttempt.then(() => {
+                        // Autoplay riuscito
+                        backgroundMusic.muted = false;  // Disattiva il muting dopo l'autoplay
+                        backgroundMusic.volume = 0.1;   // Imposta il volume desiderato
+                        musicIcon.className = 'fas fa-volume-up';
+                        // Rimuove l'evento di click dopo il primo clic per non riprodurre più musica
+                        document.removeEventListener('click', startMusic);
+                    }).catch(error => {
+                        // Autoplay bloccato dal browser
+                        musicIcon.className = 'fas fa-volume-mute';
+                        console.log("L'autoplay è stato bloccato dal browser. Clicca sul pulsante per avviare la musica.");
+                    });
+                }
+            };
+            
+            // Aggiungi l'event listener al document per far partire la musica al primo click
+            document.addEventListener('click', startMusic);
+
+            // Gestione del pulsante toggle
+            musicToggle.addEventListener('click', () => {
+                if (backgroundMusic.paused) {
+                    backgroundMusic.play();
+                    musicIcon.className = 'fas fa-volume-up';
+                } else {
+                    backgroundMusic.pause();
+                    musicIcon.className = 'fas fa-volume-mute';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
